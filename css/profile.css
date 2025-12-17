@@ -1,0 +1,48 @@
+/* Define a modern color palette */
+:root {
+    --primary-color: #1f2937; /* Dark Gray */
+    --accent-color: #4f46e5; /* Deep Indigo for professionalism */
+    --bg-color: #f4f6f9; /* Off-White/Light Gray Background */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+}
+
+/* Custom styling for section titles and list items for a clean timeline look */
+.section-title {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.job-title {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.experience-item {
+    border-left: 2px solid #e5e7eb;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+/* Custom bullet points for experience */
+.list-disc-styled li {
+    padding-left: 1.25rem;
+    position: relative;
+}
+
+.list-disc-styled li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}

@@ -1,0 +1,396 @@
+/* ------------------------------------------- */
+/* --- GLOBAL RESET & BASE STYLES --- */
+/* ------------------------------------------- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* KEY CHANGE: Removes all scrolling (vertical and horizontal) */
+}
+
+:root {
+    --primary-color: #f4f6f9; /* Light Gray/Off-White for dark background */
+    --accent-color: #4f46e5; /* Deep Indigo (kept for structure emphasis) */
+    --bg-color: #012; /* Dark Space Background */
+    --header-neon: #12d640; /* Neon Green */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--primary-color);
+    position: relative;
+    background-color: var(--bg-color);
+    
+    /* Background Image Settings */
+    background-image: url('https://images.pexels.com/photos/957962/night-photograph-starry-sky-night-sky-star-957962.jpeg');
+    background-size: 100% 95%; /* KEY CHANGE: Shrinks the image to 75% of the width, maintaining aspect ratio */
+    background-repeat: no-repeat; /* KEY CHANGE: Ensures image appears only once */
+    background-position: center;
+    
+    min-height: 100vh;
+    overflow-x: hidden; /* Redundant but harmless */
+    display: block;
+    padding-top: 60px; /* Space for fixed header */
+}
+
+/* Utility & Base Styles */
+a { 
+    color: var(--header-neon);
+    transition: color 0.3s ease; 
+}
+a:hover { 
+    color: var(--header-neon); 
+    text-decoration: none; 
+    opacity: 0.8; 
+}
+h1, h2, h3, h4, h5, h6 { 
+    font-family: 'Raleway', sans-serif;
+    color: var(--primary-color);
+}
+
+
+/* ------------------------------------------- */
+/* --- HEADER/NAVBAR STYLES (Cleaned and Unified) --- */
+/* ------------------------------------------- */
+#header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(57, 255, 20, 0.2);
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid rgba(18, 214, 64, 0.3); /* Added border from previous context */
+}
+
+/* Branding area for name and role */
+.branding {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+.handwriting-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: var(--header-neon);
+    margin: 0;
+    text-shadow: 0 0 5px var(--header-neon);
+}
+
+.role-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #ccc;
+    margin-top: -3px;
+}
+
+/* NAVIGATION MENU STYLING */
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 15px;
+}
+
+.nav-menu a {
+    padding: 6px 12px;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* Nav Link Hover and Active States */
+.nav-link { 
+    color: #fff; 
+    text-decoration: none; 
+    padding: 5px 15px; 
+    transition: 0.3s; 
+    font-size: 14px; 
+    text-transform: uppercase; 
+}
+.nav-link:hover, .nav-link.active, .active-page {
+    color: var(--header-neon) !important;
+    text-shadow: 0 0 10px rgba(18, 214, 64, 0.7);
+}
+
+.nav-menu a:hover, .nav-menu li.active a {
+    border-color: var(--header-neon);
+    color: #fff;
+    box-shadow: 0 0 10px var(--header-neon);
+}
+
+/* Set About as Active (If used in other layout files) */
+.nav-menu ul li a[href="#about"] {
+    border-color: var(--header-neon);
+    color: #fff;
+    box-shadow: 0 0 10px var(--header-neon);
+}
+
+/* SOCIAL LINKS STYLING */
+.social-links {
+    display: flex;
+    margin-left: 20px;
+    gap: 8px;
+}
+.social-links a {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+.social-links a:hover {
+    background: var(--header-neon);
+    color: #000;
+    box-shadow: 0 0 10px var(--header-neon);
+}
+
+/* Responsive Adjustments for Mobile */
+@media (max-width: 1024px) {
+    .nav-menu nav {
+        display: none;
+    }
+    #header {
+        justify-content: center;
+    }
+    .social-links {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 0;
+    }
+    .branding {
+        text-align: center;
+        flex-grow: 0;
+    }
+}
+
+
+/* ------------------------------------------- */
+/* --- MAIN CONTENT STYLES & HERO SECTION --- */
+/* ------------------------------------------- */
+
+/* Ensures the hero content fits the remaining screen space */
+#hero-main {
+    height: calc(100vh - 60px); /* Height of viewport minus header height */
+    min-height: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-left: 4px;
+    padding-right: 4px; 
+    padding-top: 32px;
+    padding-bottom: 16px;
+    z-index: 20;
+}
+
+.section-title {
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.job-title {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Experience Timeline */
+.experience-item {
+    border-left: 2px solid #e5e7eb;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+/* Custom bullet points for experience timeline */
+.list-disc-styled li {
+    padding-left: 1.25rem;
+    position: relative;
+    list-style: none;
+    line-height: 1.5;
+}
+
+.list-disc-styled li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+}
+
+/* Interests Icon Boxes */
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+    height: 100%;
+}
+.icon-box i {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+.icon-box h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--primary-color);
+}
+.icon-box:hover {
+    box-shadow: 0 4px 15px rgba(57, 255, 20, 0.3);
+    transform: translateY(-5px);
+    border-color: var(--header-neon);
+}
+
+
+/* ------------------------------------------- */
+/* --- ANIMATION STYLES --- */
+/* ------------------------------------------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 1.2s ease-out 0.5s forwards;
+    opacity: 0;
+}
+
+.animate-slideUp {
+    animation: slideUp 1s ease-out 1.5s forwards;
+    opacity: 0;
+}
+
+
+/* ------------------------------------------- */
+/* --- SOLAR SYSTEM STYLES (Modern & Optimized) --- */
+/* Removed all redundant -webkit- prefixes */
+/* ------------------------------------------- */
+.system {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0.15);
+    z-index: 10;
+    transform-origin: center center;
+}
+
+.sun { width: 144px; height: 144px; border-radius: 72px; position: absolute; top: 1333.33333px; left: 50%; margin: -72px; background-image: url('http://sdo.gsfc.nasa.gov/assets/img/latest/latest_256_HMIIF.jpg'); background-size: 144px; background-repeat: no-repeat; z-index: 10; box-shadow: 0 0 50px 20px rgba(255, 165, 0, 0.5); }
+
+/* --- ORBIT KEYFRAMES --- */
+@keyframes rot-mer { from { transform: rotate(0deg) translatey(-109.2px) rotate(0deg); } to { transform: rotate(360deg) translatey(-109.2px) rotate(-360deg); } }
+@keyframes rot-ven { from { transform: rotate(0deg) translatey(-117px) rotate(0deg); } to { transform: rotate(360deg) translatey(-117px) rotate(-360deg); } }
+@keyframes rot-ear { from { transform: rotate(0deg) translatey(-132.6px) rotate(0deg); } to { transform: rotate(360deg) translatey(-132.6px) rotate(-360deg); } }
+@keyframes rot-mar { from { transform: rotate(0deg) translatey(-153.4px) rotate(0deg); } to { transform: rotate(360deg) translatey(-153.4px) rotate(-360deg); } }
+@keyframes rot-jup { from { transform: rotate(0deg) translatey(-296.4px) rotate(0deg); } to { transform: rotate(360deg) translatey(-296.4px) rotate(-360deg); } }
+@keyframes rot-sat { from { transform: rotate(0deg) translatey(-470.6px) rotate(0deg); } to { transform: rotate(360deg) translatey(-470.6px) rotate(-360deg); } }
+@keyframes rot-ura { from { transform: rotate(0deg) translatey(-842.4px) rotate(0deg); } to { transform: rotate(360deg) translatey(-842.4px) rotate(-360deg); } }
+@keyframes rot-nep { from { transform: rotate(0deg) translatey(-1263.6px) rotate(0deg); } to { transform: rotate(360deg) translatey(-1263.6px) rotate(-360deg); } }
+@keyframes rot-plu { from { transform: rotate(0deg) translatey(-1620.0px) rotate(0deg); } to { transform: rotate(360deg) translatey(-1620.0px) rotate(-360deg); } }
+
+/* --- ORBIT PATH GLOWS --- */
+@keyframes blink_ear { 0% { opacity: 0.3; box-shadow: 0 0 5px 1px rgba(169, 136, 245, 0.5); } 100% { opacity: 1; box-shadow: 0 0 20px 3px rgba(169, 136, 245, 1); } }
+@keyframes blink_mar { 0% { opacity: 0.3; box-shadow: 0 0 5px 1px rgba(169, 136, 245, 0.5); } 100% { opacity: 1; box-shadow: 0 0 20px 3px rgba(169, 136, 245, 1); } }
+@keyframes blink_jup { 0% { opacity: 0.3; box-shadow: 0 0 8px 1px rgba(169, 136, 245, 0.5); } 100% { opacity: 1; box-shadow: 0 0 25px 4px rgba(169, 136, 245, 1); } }
+@keyframes blink_sat { 0% { opacity: 0.3; box-shadow: 0 0 10px 2px rgba(169, 136, 245, 0.5); } 100% { opacity: 1; box-shadow: 0 0 35px 5px rgba(169, 136, 245, 1); } }
+@keyframes blink_ura { 0% { opacity: 0.3; box-shadow: 0 0 15px 3px rgba(169, 136, 245, 0.5); } 100% { opacity: 1; box-shadow: 0 0 40px 7px rgba(169, 136, 245, 1); } }
+@keyframes blink_nep { 0% { opacity: 0.3; box-shadow: 0 0 15px 4px rgba(169, 136, 245, 0.5); } 100% { opacity: 1; box-shadow: 0 0 45px 8px rgba(169, 136, 245, 1); } }
+@keyframes blink_plu { 0% { opacity: 0.3; box-shadow: 0 0 20px 5px rgba(169, 136, 245, 0.5); } 100% { opacity: 1; box-shadow: 0 0 50px 10px rgba(169, 136, 245, 1); } }
+
+/* --- PLANETS AND PATHS --- */
+.mer { width: 4.55px; height: 4.55px; border-radius: 50%; background-color: #888; position: absolute; top: 1333.33333px; left: 50%; margin: -2.275px; animation: rot-mer 0.88s infinite linear; z-index: 11; }
+.mer-path { width: 218.4px; height: 218.4px; border-radius: 50%; z-index: -11; position: absolute; top: 1333.33333px; left: 50%; margin: -109.2px; border: solid 10px #b48aad; }
+.ven { width: 7.15px; height: 7.15px; border-radius: 50%; background-color: #f5f9be; position: absolute; top: 1333.33333px; left: 50%; margin: -3.575px; animation: rot-ven 2.25s infinite linear; z-index: 11; }
+.ven-path { width: 234px; height: 234px; border-radius: 50%; z-index: -11; position: absolute; top: 1333.33333px; left: 50%; margin: -117px; border: solid 10px #e968d7; }
+.ear { width: 9.1px; height: 9.1px; border-radius: 50%; background-color: #4b94f9; position: absolute; top: 1333.33333px; left: 50%; margin: -4.55px; animation: rot-ear 3.65s infinite linear; z-index: 11; }
+.ear-path { width: 265.2px; height: 265.2px; border-radius: 50%; z-index: -11; position: absolute; top: 1333.33333px; left: 50%; margin: -132.6px; border: solid 10px #a988f5; box-shadow: 0 0 15px 3px rgba(169, 136, 245, 0.8); animation: blink_ear 1.5s infinite alternate; }
+.mar { width: 7.8px; height: 7.8px; border-radius: 50%; background-color: #dd411a; position: absolute; top: 1333.33333px; left: 50%; margin: -3.9px; animation: rot-mar 6.87s infinite linear; z-index: 11; background-image: repeating-linear-gradient( to bottom, #fff, #fff 1px, transparent 1px, transparent 5px ); }
+.mar-path { width: 306.8px; height: 306.8px; border-radius: 50%; z-index: -11; position: absolute; top: 1333.33333px; left: 50%; margin: -153.4px; border: solid 10px #a988f5; box-shadow: 0 0 18px 3px rgba(169, 136, 245, 0.8); animation: blink_mar 1.5s infinite alternate; }
+.jup { width: 91px; height: 91px; border-radius: 50%; background-color: #eaad3b; position: absolute; top: 1333.33333px; left: 50%; margin: -45.5px; animation: rot-jup 43.32s infinite linear; z-index: 11; background-image: repeating-linear-gradient( 6deg, #797663 22px, #e1dcde 16px, #c3a992 30px, #e9ece2 30px ); }
+.jup-path { width: 592.8px; height: 592.8px; border-radius: 50%; z-index: -11; position: absolute; top: 1333.33333px; left: 50%; margin: -296.4px; border: solid 10px #a988f5; box-shadow: 0 0 20px 4px rgba(169, 136, 245, 0.8); animation: blink_jup 1.5s infinite alternate; }
+.sat { width: 75.4px; height: 75.4px; border-radius: 50%; background-color: #d6cd93; position: absolute; top: 1333.33333px; left: 50%; margin: -37.7px; animation: rot-sat 107.59s infinite linear; z-index: 11; }
+.sat-path { width: 941.2px; height: 941.2px; border-radius: 50%; z-index: -11; position: absolute; top: 1333.33333px; left: 50%; margin: -470.6px; border: solid 10px #a988f5; box-shadow: 0 0 25px 5px rgba(169, 136, 245, 0.8); animation: blink_sat 1.5s infinite alternate; }
+.ura { width: 33.8px; height: 33.8px; border-radius: 50%; background-color: #bfeef2; position: absolute; top: 1333.33333px; left: 50%; margin: -16.9px; animation: rot-ura 306.87s infinite linear; z-index: 11; }
+.ura-path { width: 1684.8px; height: 1684.8px; border-radius: 50%; z-index: -11; position: absolute; top: 1333.33333px; left: 50%; margin: -842.4px; border: solid 10px #a988f5; box-shadow: 0 0 30px 7px rgba(169, 136, 245, 0.8); animation: blink_ura 1.5s infinite alternate; }
+.nep { width: 31.2px; height: 31.2px; border-radius: 50%; background-color: #363ed7; position: absolute; top: 1333.33333px; left: 50%; margin: -15.6px; animation: rot-nep 601.9s infinite linear; z-index: 11; }
+.nep-path { width: 2527.2px; height: 2527.2px; border-radius: 50%; z-index: -11; position: absolute; top: 1333.33333px; left: 50%; margin: -1263.6px; border: solid 10px #a988f5; box-shadow: 0 0 35px 8px rgba(169, 136, 245, 0.8); animation: blink_nep 1.5s infinite alternate; }
+.plu { width: 3.9px; height: 3.9px; border-radius: 50%; background-color: #963; position: absolute; top: 1620.73333px; left: 50%; margin: -1.95px; animation: rot-plu 904.65s infinite linear; z-index: 11; }
+.plu-path { width: 3239.6px; height: 3239.6px; border-radius: 50%; z-index: -11; position: absolute; top: 1620.73333px; left: 50%; margin: -1619.8px; border: solid 10px #a988f5; box-shadow: 0 0 40px 10px rgba(169, 136, 245, 0.8); animation: blink_plu 1.5s infinite alternate; }
+
+/* --- MOONS AND RINGS --- */
+@keyframes rot-lune { from { transform: rotate(0deg) translatey(-9.1px) rotate(0deg); } to { transform: rotate(360deg) translatey(-9.1px) rotate(-360deg); } }
+@keyframes rot-pho { from { transform: rotate(0deg) translatey(-9.1px) rotate(0deg); } to { transform: rotate(360deg) translatey(-9.1px) rotate(-360deg); } }
+@keyframes rot-dem { from { transform: rotate(0deg) translatey(-11.7px) rotate(0deg); } to { transform: rotate(360deg) translatey(-11.7px) rotate(-360deg); } } 
+.lune { width: 2.6px; height: 2.6px; background-color: #fff; position: absolute; top: 50%; left: 50%; margin: -1.95px; animation: rot-lune 0.27s infinite linear; z-index: 11;}
+.pho, .dem { width: 1.3px; height: 1.3px; background-color: #fff; position: absolute; top: 50%; left: 50%; z-index: 11;}
+.pho { margin: -1.3px; animation: rot-pho 0.15s infinite linear; }
+.dem { margin: -1.3px; animation: rot-dem 0.2s infinite linear; }
+.jove { width: 2.6px; height: 2.6px; background-color: #fff; position: absolute; top: 45.5px; left: 50%; z-index: 11;}
+@keyframes rot-io { from { transform: rotate(0deg) translatey(-50.7px) rotate(0deg); } to { transform: rotate(360deg) translatey(-50.7px) rotate(-360deg); } }
+.io { animation: rot-io 0.2s infinite linear; }
+@keyframes rot-eur { from { transform: rotate(0deg) translatey(-53.3px) rotate(0deg); } to { transform: rotate(360deg) translatey(-53.3px) rotate(-360deg); } }
+.eur { animation: rot-eur 0.35s infinite linear; }
+@keyframes rot-gan { from { transform: rotate(0deg) translatey(-58.5px) rotate(0deg); } to { transform: rotate(360deg) translatey(-58.5px) rotate(-360deg); } }
+.gan { animation: rot-gan 0.7s infinite linear; }
+@keyframes rot-cal { from { transform: rotate(0deg) translatey(-68.9px) rotate(0deg); } to { transform: rotate(360deg) translatey(-68.9px) rotate(-360deg); } }
+.cal { animation: rot-cal 1.65s infinite linear; }
+.spot { position: absolute; width: 20.8px; height: 15.6px; border-radius: 10.4px / 7.8px; top: 58.5px; left: 50%; background-color: #bc833b; box-shadow: 0px 0px 5px #e1dcde; border: solid 1px #e1dcde; box-sizing: border-box; -webkit-box-sizing: border-box; z-index: 11; }
+.nep .spot { background-color: #2730a9; border: 0; box-shadow: none; top: 50%; left: 45%; width: 13px; height: 7.8px; margin: -2.6px; border-radius: 6.5px / 3.9px; border-left: solid 1px #7ed6fe; } 
+div[class$="-ring"] { border-radius: 50%; position: absolute; top: 50%; left: 50%; opacity: 0.7; transform: rotatex(45deg); z-index: 11;}
+.a-ring { border: solid 6.5px #96866f; width: 154.7px; height: 154.7px; margin: -83.85px; } 
+.b-ring { border: solid 13px #554c3c; width: 135.2px; height: 135.2px; margin: -80.6px; } 
+.c-ring { border: solid 11.7px #574f4a; width: 123.5px; height: 123.5px; margin: -73.45px; } 
+.f-ring { border: solid 2.6px #908e8d; width: 172.9px; height: 172.9px; margin: -89.05px; } 
+.e-ring { border: solid 9.1px #908e8d; width: 132.6px; height: 132.6px; margin: -75.4px; transform: rotatex(0deg) rotatey(89deg) !important;}
+
+/* --- CONTENT CARDS --- */
+.glass-card {
+    background: rgba(0, 0, 0, 0.7); border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); border-radius: 20px; padding: 2rem;
+}
