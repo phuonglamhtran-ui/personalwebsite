@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Pedals to Progress: Pyökylä's Sustainable Growth | Blog - Pansy Phuong Lam Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables: Good practice --- */
+        :root {
+            --neon-green: #12d640;
+            --glass: rgba(0, 0, 0, 0.7);
+            --border: rgba(18, 214, 64, 0.2);
+        }
+
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #012 url('https://images.pexels.com/photos/957962/night-photograph-starry-sky-night-sky-star-957962.jpeg') fixed center / cover; 
+            color: white;
+            margin: 0;
+            padding-top: 5rem; /* Equivalent to h-20 (80px) */
+        }
+        
+        /* --- Planetary Animation System (Retained) --- */
+        .system {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            opacity: 0.4; pointer-events: none;
+        }
+        .sun {
+            position: absolute; top: 50%; left: 50%; width: 30px; height: 30px;
+            background: #ffcc00; border-radius: 50%; box-shadow: 0 0 50px #ffcc00;
+            transform: translate(-50%, -50%);
+        }
+        .ear-path, .jup-path {
+            position: absolute; top: 50%; left: 50%; border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 50%; transform: translate(-50%, -50%);
+        }
+        .ear-path { width: 350px; height: 350px; }
+        .jup-path { width: 600px; height: 600px; }
+        .ear, .jup { position: absolute; top: 50%; left: 50%; border-radius: 50%; }
+        .ear {
+            width: 10px; height: 10px; background: var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green); animation: orbit-ear 25s linear infinite;
+        }
+        .jup {
+            width: 18px; height: 18px; background: #4a5568;
+            animation: orbit-jup 50s linear infinite;
+        }
+        @keyframes orbit-ear {
+            from { transform: translate(-50%, -50%) rotate(0deg) translateX(175px) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg) translateX(175px) rotate(-360deg); }
+        }
+        @keyframes orbit-jup {
+            from { transform: translate(-50%, -50%) rotate(0deg) translateX(300px) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg) translateX(300px) rotate(-360deg); }
+        }
+
+        /* --- UI Styles --- */
+        .nav-link {
+            transition: all 0.3s ease; text-transform: uppercase; font-size: 13px; font-weight: 600;
+        }
+        .nav-link:hover, .nav-link.active { 
+            color: var(--neon-green) !important; text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Blog Content Container Styles */
+        .blog-container {
+            position: relative; 
+            padding: 2.5rem 1.5rem; 
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--glass); 
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(18, 214, 64, 0.1);
+        }
+
+        /* Typography improvements */
+        .blog-container h1 { font-size: 2.25rem; margin-bottom: 1rem; }
+        .blog-container h2 { font-size: 1.75rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+        
+        .blog-container h1, .blog-container h2, .blog-container h3 {
+            color: var(--neon-green);
+            text-shadow: 0 0 5px rgba(18, 214, 64, 0.4);
+        }
+
+        .blog-container p, .blog-container li, .blog-container blockquote {
+            color: #d1d5db; 
+            line-height: 1.75; 
+        }
+        
+        .blog-container blockquote {
+            border-left: 4px solid var(--neon-green);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            background: rgba(18, 214, 64, 0.05); /* Light highlight */
+        }
+
+        .blog-container .author {
+            color: #9ca3af; /* Gray-400 equivalent */
+            font-size: 0.9rem;
+        }
+
+        /* Close button styles */
+        #close-post-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--neon-green);
+            font-size: 30px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            z-index: 10;
+        }
+
+        #close-post-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            opacity: 0.8;
+        }
+        
+        @media (min-width: 640px) {
+            .blog-container {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="system">
+        <div class="sun"></div>
+        <div class="ear-path"></div><div class="ear"></div>
+        <div class="jup-path"></div><div class="jup"></div>
+    </div>
+
+<header id="header" class="fixed top-0 left-0 right-0 z-[1000] bg-black/60 backdrop-blur-md border-b border-[#12d640]/20 h-20">
+        <div class="container mx-auto flex justify-between items-center h-full px-6 sm:px-12">
+            <a href="../index.html" class="text-3xl font-bold tracking-wide text-[#c5ffcd]" style="font-family: 'Dancing Script', cursive; text-decoration: none;">
+                Pansy
+            </a>
+        <nav class="hidden lg:flex items-center space-x-8 font-medium" aria-label="Main Navigation">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../Layout/about.html" class="nav-link">About</a>
+            <a href="../Layout/profile.html" class="nav-link">Experience</a>
+            <a href="../Layout/portfolio.html" class="nav-link">Portfolio</a>
+            <a href="../Layout/story.html" class="nav-link active" aria-current="page">Blog & Stories</a>
+            <a href="https://drive.google.com/file/d/1BDyKJusHrmx4IbtlDwynbKSSfv2OBt4K/view" target="_blank" rel="noopener noreferrer" class="nav-link">Resume</a>
+            <a href="../Layout/contact.html" class="nav-link">Contact</a>
+        </nav>
+        <div class="social-links flex space-x-4">
+            <a href="https://linkedin.com/in/han-tran-fi/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-[#12d640]" aria-label="LinkedIn Profile"><i class="bx bxl-linkedin"></i></a>
+            <a href="https://github.com/coderhani/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-[#12d640]" aria-label="GitHub Profile"><i class="bx bxl-github"></i></a>
+        </div>
+
+            <button id="mobile-toggle" class="lg:hidden text-3xl text-[#12d640]" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="bx bx-menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <nav id="mobile-menu" class="fixed top-20 left-0 w-full h-full bg-black/95 backdrop-blur-lg z-[999] p-6 hidden" aria-labelledby="mobile-toggle">
+        <ul class="flex flex-col space-y-4 text-xl text-center" role="menu">
+            <li href="../index.html" class="block py-2 hover:text-[#12d640]" role="menuitem">Home</a></li>
+            <li href="../Layout/about.html" class="block py-2 hover:text-[#12d640]" role="menuitem">About</a></li>
+            <li href="../Layout/profile.html" class="block py-2 hover:text-[#12d640]" role="menuitem">Experience</a></li>
+            <li href="../Layout/portfolio.html" class="block py-2 hover:text-[#12d640]" role="menuitem">Portfolio</a></li>
+            <li href="../Layout/story.html" class="block py-2 text-[#12d640] text-shadow-lg" role="menuitem" aria-current="page">Blog & Stories</a></li>
+            <li href="https://drive.google.com/file/d/1BDyKJusHrmx4IbtlDwynbKSSfv2OBt4K/view" target="_blank" rel="noopener noreferrer" class="block py-2 hover:text-[#12d640]" role="menuitem">Resume</a></li>
+            <li href="../Layout/contact.html" class="block py-2 hover:text-[#12d640]" role="menuitem">Contact</a></li>
+        </ul>
+        <div class="flex justify-center space-x-6 mt-8">
+            <a href="https://linkedin.com/in/han-tran-fi/" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-[#12d640]" aria-label="LinkedIn Profile"><i class="bx bxl-linkedin"></i></a>
+            <a href="https://github.com/coderhani/" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-[#12d640]" aria-label="GitHub Profile"><i class="bx bxl-github"></i></a>
+        </div>
+    </nav>
+    
+    <main class="container mx-auto px-6 sm:px-12 my-12" role="main">
+        <article class="blog-container"> 
+            <button id="close-post-btn" aria-label="Close Blog Post" title="Back to Blog Index">
+                <i class="bx bx-x"></i>
+            </button>
+            
+            <h1>From Pedals to Progress: How Pyökylä Scaled Sustainability through Smart Management and Data-Driven Growth</h1>
+            <p class="author">Posted by Pansy Phuong Lam | May 6, 2021</p>
+        <br>
+            <p>When <b style="color: rgb(214, 104, 220);">Pyökylä</b> was founded in 2019 in Turku, Finland, it began as a simple student startup — a small fleet of affordable rental bikes for students and travelers. But beneath its modest surface lay a structured approach that blended <b style="color: rgb(214, 104, 220);">data analytics</b>, <b style="color: rgb(214, 104, 220);">customer service</b>, <b style="color: rgb(214, 104, 220);">project management</b>, <b style="color: rgb(214, 104, 220);">procurement strategy</b>, and <b style="color: rgb(214, 104, 220);">marketing innovation</b>.</p>
+        </br>
+            <p>Today, Pyökylä stands as an example of how even a small-scale startup can leverage analytics and agile thinking to grow sustainably while supporting community goals.</p>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>Analytics: Turning Pedal Data into Insights</h2>
+
+            <p>At Pyökylä, every rented bike tells a story. Data collected from <b style="color: rgb(214, 104, 220);">bookings</b>, <b style="color: rgb(214, 104, 220);">usage patterns</b>, and <b style="color: rgb(214, 104, 220);">customer feedback</b> became the foundation for decision-making.</p>
+        <br>
+            <p>Through data analytics, the team identified <b style="color: rgb(214, 104, 220);">peak rental times</b>, popular routes, and customer preferences — helping them design flexible pricing models and improve service availability. This data-driven approach also revealed behavioral patterns among international students, guiding the creation of tailored rental packages for short-term exchange stays and longer academic terms.</p>
+        </br>
+            <p>By maintaining a <b style="color: rgb(214, 104, 220);">customer information hub</b>, Pyökylä transformed user data into actionable insights — supporting marketing decisions, fleet management, and future service design.</p>
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>Customer Service: More Than Rentals — A Community</h2>
+
+            <p>Pyökylä’s customer service philosophy goes beyond transactions. Its mission was to support and connect students, not just rent out bicycles.</p>
+        <br>
+            <p>Initiatives like <b style="color: rgb(214, 104, 220);">“Survive-Turku”</b> offered newcomers guidance on life, transportation, and sustainability in Turku. Through quick response channels, friendly communication, and multilingual support, the startup created an experience that felt personal and local.</p>
+        </br>
+            <p>By maintaining <b style="color: rgb(214, 104, 220);">continuous feedback loops</b>, the team ensured that every concern became an opportunity to improve — turning satisfied customers into active brand ambassadors.</p>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>Project Management: Riding Agile Toward Growth</h2>
+        <br>
+            <p>Behind Pyökylä’s journey was a structured approach to project management. The founders applied <b style="color: rgb(214, 104, 220);">agile principles</b> to manage operations, from bike procurement to marketing campaigns. Regular sprint reviews helped prioritize improvements, while <b style="color: rgb(214, 104, 220);">Kanban boards</b> ensured clear task visibility across the team.</p>
+        </br>
+            <p>Each stage — from customer onboarding to fleet maintenance — was treated as a mini-project, with goals, timelines, and measurable outcomes. This adaptive style allowed the startup to respond quickly to changing customer needs and seasonal demand.</p>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>Procurement: Building a Circular Supply Chain</h2>
+        <br>
+            <p>Sustainability guided every procurement decision at Pyökylä. Rather than purchasing new bikes in bulk, the startup adopted a <b style="color: rgb(214, 104, 220);">circular economy model</b> — sourcing <b style="color: rgb(214, 104, 220);">secondhand or refurbished bikes</b> from local sellers and repair shops.</p>
+        </br>
+            <p>This not only reduced costs but also extended the lifecycle of existing materials. Collaborations with local workshops and mechanics created new opportunities for <b style="color: rgb(214, 104, 220);">reuse, repair, and recycling</b>, supporting both the local economy and environmental responsibility.</p>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>Marketing: Storytelling with Purpose</h2>
+        <br>
+            <p>Pyökylä’s marketing strategy relied on authenticity and community engagement rather than big budgets. Social media campaigns highlighted stories of students, tourists, and local users who embraced cycling as a lifestyle. Events like community rides, eco-challenges, and student discount campaigns helped the brand connect emotionally with its audience.</p>
+        </br>
+            <p>Data from customer surveys and rental analytics guided campaign timing and messaging — ensuring that marketing remained <b style="color: rgb(214, 104, 220);">data-informed but human-centered</b>.</p>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>Delivery and Operations: Streamlined and Scalable</h2>
+        <br>
+            <p>To ensure smooth delivery, Pyökylä focused on <b style="color: rgb(214, 104, 220);">operational efficiency</b>. Booking systems were automated for convenience, while a simple digital dashboard helped track <b style="color: rgb(214, 104, 220);">inventory</b>, <b style="color: rgb(214, 104, 220);">maintenance schedules</b>, and customer satisfaction in real time.</p>
+        </br>
+            <p>As the fleet grew, the team applied performance metrics to measure delivery times, maintenance turnaround, and bike availability — balancing customer experience with cost efficiency. This approach made Pyökylä’s delivery model scalable — ready to serve not just Turku, but potentially other student cities across Finland.</p>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>The Impact: Community, Sustainability, and Data-Driven Growth</h2>
+
+            <p>Through the integration of smart management practices and human-centered design, Pyökylä achieved:</p>
+
+            <ul class="list-disc ml-6 space-y-2">
+                <li>A growing community of exchange students and tourists.</li>
+                <li>High customer satisfaction and strong word-of-mouth referrals.</li>
+                <li>A sustainable procurement process aligned with <b style="color: rgb(214, 104, 220);">circular economy principles</b>.</li>
+                <li>A <b style="color: rgb(214, 104, 220);">data analytics framework</b> for continuous service improvement.</li>
+            </ul>
+        <br>
+            <p>What began as a small startup now represents a modern case of sustainable entrepreneurship — showing how analytics, customer service, and responsible management can pedal together toward a greener, more connected future.</p>
+        </br>
+            <blockquote>Pyökylä started on two wheels — but it grew on insights.</blockquote>
+            </article>
+
+                <footer class="max-w-7xl mx-auto mt-12 pt-6 border-t border-[var(--neon-green)] text-center text-sm text-gray-400">
+        <p>&copy; 2025 Copyright © Pansy Phuong Lam Tran</p>
+    </footer>
+    
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closePostBtn = document.getElementById('close-post-btn');
+            
+            // Mobile Menu Toggle Functionality
+            toggleButton.addEventListener('click', () => {
+                const isExpanded = mobileMenu.classList.toggle('hidden');
+                const icon = toggleButton.querySelector('.bx');
+                
+                // Toggle ARIA attributes
+                toggleButton.setAttribute('aria-expanded', !isExpanded);
+
+                if (isExpanded) {
+                    icon.classList.remove('bx-x');
+                    icon.classList.add('bx-menu');
+                } else {
+                    icon.classList.remove('bx-menu');
+                    icon.classList.add('bx-x');
+                }
+            });
+            
+            // --- CLOSE POST FUNCTION ---
+            closePostBtn.addEventListener('click', (event) => {
+                event.preventDefault(); 
+                
+                // Option 1: Go back to the previous page in history (most user-friendly)
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    // Fallback to the main blog listing page
+                    window.location.href = 'story.html'; 
+                }
+            });
+            // --- END CLOSE POST FUNCTION ---
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 From Startup to Data-Driven Growth | Blog - Pansy Phuong Lam Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables: Good practice --- */
+        :root {
+            --neon-green: #12d640;
+            --glass: rgba(0, 0, 0, 0.7);
+            --border: rgba(18, 214, 64, 0.2);
+        }
+
+        /* --- Base Styles --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #012 url('https://images.pexels.com/photos/957962/night-photograph-starry-sky-night-sky-star-957962.jpeg') fixed center / cover; 
+            color: white;
+            margin: 0;
+            padding-top: 5rem; /* Equivalent to h-20 (80px) */
+        }
+        
+        /* --- Planetary Animation System (Retained) --- */
+        .system {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            opacity: 0.4; pointer-events: none;
+        }
+        .sun {
+            position: absolute; top: 50%; left: 50%; width: 30px; height: 30px;
+            background: #ffcc00; border-radius: 50%; box-shadow: 0 0 50px #ffcc00;
+            transform: translate(-50%, -50%);
+        }
+        .ear-path, .jup-path {
+            position: absolute; top: 50%; left: 50%; border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 50%; transform: translate(-50%, -50%);
+        }
+        .ear-path { width: 350px; height: 350px; }
+        .jup-path { width: 600px; height: 600px; }
+        .ear, .jup { position: absolute; top: 50%; left: 50%; border-radius: 50%; }
+        .ear {
+            width: 10px; height: 10px; background: var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green); animation: orbit-ear 25s linear infinite;
+        }
+        .jup {
+            width: 18px; height: 18px; background: #4a5568;
+            animation: orbit-jup 50s linear infinite;
+        }
+        @keyframes orbit-ear {
+            from { transform: translate(-50%, -50%) rotate(0deg) translateX(175px) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg) translateX(175px) rotate(-360deg); }
+        }
+        @keyframes orbit-jup {
+            from { transform: translate(-50%, -50%) rotate(0deg) translateX(300px) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg) translateX(300px) rotate(-360deg); }
+        }
+
+        /* --- UI Styles --- */
+        .nav-link {
+            transition: all 0.3s ease; text-transform: uppercase; font-size: 13px; font-weight: 600;
+        }
+        .nav-link:hover, .nav-link.active { 
+            color: var(--neon-green) !important; text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* Blog Content Container Styles */
+        .blog-container {
+            position: relative; 
+            padding: 2.5rem 1.5rem; 
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--glass); 
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(18, 214, 64, 0.1);
+        }
+
+        /* Typography improvements */
+        .blog-container h1 { font-size: 2.25rem; margin-bottom: 1rem; }
+        .blog-container h2 { font-size: 1.75rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+        
+        .blog-container h1, .blog-container h2, .blog-container h3 {
+            color: var(--neon-green);
+            text-shadow: 0 0 5px rgba(18, 214, 64, 0.4);
+        }
+
+        .blog-container p, .blog-container li, .blog-container blockquote {
+            color: #d1d5db; 
+            line-height: 1.75; 
+        }
+        
+        .blog-container blockquote {
+            border-left: 4px solid var(--neon-green);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            background: rgba(18, 214, 64, 0.05); /* Light highlight */
+        }
+
+        .blog-container .author, .blog-container .cta {
+            color: #9ca3af; /* Gray-400 equivalent */
+            font-size: 0.9rem;
+        }
+
+        /* Close button styles */
+        #close-post-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--neon-green);
+            font-size: 30px;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            z-index: 10;
+        }
+
+        #close-post-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            opacity: 0.8;
+        }
+        
+        @media (min-width: 640px) {
+            .blog-container {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <div class="system">
+        <div class="sun"></div>
+        <div class="ear-path"></div><div class="ear"></div>
+        <div class="jup-path"></div><div class="jup"></div>
+    </div>
+
+    <header id="header" class="fixed top-0 left-0 right-0 z-[1000] bg-black/60 backdrop-blur-md border-b border-[#12d640]/20 h-20">
+        <div class="container mx-auto flex justify-between items-center h-full px-6 sm:px-12">
+            <a href="../index.html" class="text-3xl font-bold tracking-wide text-[#c5ffcd]" style="font-family: 'Dancing Script', cursive; text-decoration: none;">
+                Pansy
+            </a>
+        <nav class="hidden lg:flex items-center space-x-8 font-medium" aria-label="Main Navigation">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../Layout/about.html" class="nav-link">About</a>
+            <a href="../Layout/profile.html" class="nav-link">Experience</a>
+            <a href="../Layout/portfolio.html" class="nav-link">Portfolio</a>
+            <a href="../Layout/story.html" class="nav-link active" aria-current="page">Blog & Stories</a>
+            <a href="https://drive.google.com/file/d/1BDyKJusHrmx4IbtlDwynbKSSfv2OBt4K/view" target="_blank" rel="noopener noreferrer" class="nav-link">Resume</a>
+            <a href="../Layout/contact.html" class="nav-link">Contact</a>
+        </nav>
+        <div class="social-links flex space-x-4">
+            <a href="https://linkedin.com/in/han-tran-fi/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-[#12d640]" aria-label="LinkedIn Profile"><i class="bx bxl-linkedin"></i></a>
+            <a href="https://github.com/coderhani/" target="_blank" rel="noopener noreferrer" class="text-xl hover:text-[#12d640]" aria-label="GitHub Profile"><i class="bx bxl-github"></i></a>
+        </div>
+
+            <button id="mobile-toggle" class="lg:hidden text-3xl text-[#12d640]" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-menu">
+                <i class="bx bx-menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <nav id="mobile-menu" class="fixed top-20 left-0 w-full h-full bg-black/95 backdrop-blur-lg z-[999] p-6 hidden" aria-labelledby="mobile-toggle">
+        <ul class="flex flex-col space-y-4 text-xl text-center" role="menu">
+            <li href="../index.html" class="block py-2 hover:text-[#12d640]" role="menuitem">Home</a></li>
+            <li href="../Layout/about.html" class="block py-2 hover:text-[#12d640]" role="menuitem">About</a></li>
+            <li href="../Layout/profile.html" class="block py-2 hover:text-[#12d640]" role="menuitem">Experience</a></li>
+            <li href="../Layout/portfolio.html" class="block py-2 hover:text-[#12d640]" role="menuitem">Portfolio</a></li>
+            <li href="../Layout/story.html" class="block py-2 text-[#12d640] text-shadow-lg" role="menuitem" aria-current="page">Blog & Stories</a></li>
+            <li href="https://drive.google.com/file/d/1BDyKJusHrmx4IbtlDwynbKSSfv2OBt4K/view" target="_blank" rel="noopener noreferrer" class="block py-2 hover:text-[#12d640]" role="menuitem">Resume</a></li>
+            <li href="../Layout/contact.html" class="block py-2 hover:text-[#12d640]" role="menuitem">Contact</a></li>
+        </ul>
+        <div class="flex justify-center space-x-6 mt-8">
+            <a href="https://linkedin.com/in/han-tran-fi/" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-[#12d640]" aria-label="LinkedIn Profile"><i class="bx bxl-linkedin"></i></a>
+            <a href="https://github.com/coderhani/" target="_blank" rel="noopener noreferrer" class="text-3xl hover:text-[#12d640]" aria-label="GitHub Profile"><i class="bx bxl-github"></i></a>
+        </div>
+    </nav>
+    
+    <main class="container mx-auto px-6 sm:px-12 my-12" role="main">
+        <article class="blog-container"> 
+            <button id="close-post-btn" aria-label="Close Blog Post" title="Back to Blog Index">
+                <i class="bx bx-x"></i>
+            </button>
+            
+            <h1>🚀 From Startup to Data-Driven Growth: My Journey into Business Analytics</h1>
+            <p class="author">Posted by Pansy Phuong Lam | August, 2022</p>
+
+            <p>In 2019, I stood on the front lines of entrepreneurship as the founder of <b>Pyökylä</b>, a small bike rental startup in Turku, Finland. Our mission was simple: provide affordable, flexible mobility for students and travelers.</p>
+            <br>
+            <p>In those initial days, our business was fueled by instinct. Decisions about pricing, inventory, and logistics were guided purely by immediate customer feedback and gut feeling. We were agile, responsive, and deeply connected to our community.</p>
+        </br>
+            <p>But as Pyökylä scaled, relying on intuition became a liability.</p>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>The Entrepreneur's Data Awakening</h2>
+
+            <p>As demand surged, clear patterns emerged: certain bike models were constantly overbooked, peak rental periods shifted seasonally, and maintenance costs were frustratingly unpredictable. The realization was sharp: to scale efficiently and sustainably, we needed a systematic way to understand the <i>why</i> behind the <i>what</i>.</p>
+            <br>
+            <p>This was my introduction to the power of <b>data</b>. We began tracking key operational metrics:</p>
+    
+            <ul class="list-disc ml-6 space-y-2">
+                <li><b style="color: rgb(220, 104, 218);">Seasonal Demand:</b> To optimize bike availability and marketing spend.</li>
+                <li><b style="color: rgb(220, 104, 218);">Maintenance Logs:</b> To shift from reactive repairs to proactive, scheduled maintenance, minimizing costly downtime.</li>
+                <li><b style="color: rgb(220, 104, 218);">Rental Trends & Routes:</b> To inform strategic decisions, such as expanding our “Survive Turku” community guide based on where our customers actually traveled.</li>
+            </ul>
+        </br>
+            <p>Data quickly became our <b>strategic compass</b>. With analytics, we transformed our operations, optimized pricing for revenue and affordability, and ensured our business decisions were rooted in customer reality. Pyökylä evolved from an instinct-driven venture into an efficient, <b>data-informed business</b>.</p>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>Turning Practical Experience into a Professional Passion</h2>
+
+            <p>My work with Pyökylä was more than just running a business; it was a real-world analytics lab. I saw firsthand how transforming raw customer behavior and operational metrics into strategic insights could drive tangible growth and strengthen community engagement.</p>
+            <br>
+            <p>This experience didn't just inspire a career change—it formalized my career direction. I decided to build a deep, technical foundation to complement my practical startup acumen.</p>
+        </br>
+            <p>I pursued a Master’s degree in <b>Business Analytics and Information Knowledge Management</b>, focusing on closing the gap between raw data and business strategy. My studies equipped me with advanced skills in:</p>
+
+            <ul class="list-disc ml-6 space-y-2">
+                <li ><b style="color: rgb(220, 104, 218);">Statistical Modeling and Predictive Analytics:</b> Moving beyond simple reporting to forecasting future trends.</li>
+                <li><b style="color: rgb(220, 104, 218);">Business Intelligence (BI) Tools:</b> Mastering platforms like <b>Power BI</b> to translate complex datasets into accessible visualizations for executive decision-making.</li>
+                <li><b style="color: rgb(220, 104, 218);">Strategic Translation:</b> Learning how to articulate data insights into clear, actionable business strategies.</li>
+            </ul>
+
+            <hr class="border-t border-gray-700 my-8">
+
+            <h2>The Road Ahead: Where Startup Grit Meets Data Expertise</h2>
+
+            <p>Today, I combine the adaptability and grit of a startup founder with the analytical rigor of a data professional.</p>
+            <br>
+            <p>I am seeking roles in <b>Data Analytics</b>, <b>Business Intelligence</b>, or <b>Performance Analysis</b> where I can:</p>
+
+            <ul class="list-disc ml-6 space-y-2">
+                <li> <b style="color: rgb(220, 104, 218);">Drive Efficiency:</b> Use operational data to identify bottlenecks and optimize processes.</li>
+                <li> <b style="color: rgb(220, 104, 218);">Inform Strategy:</b> Provide executive teams with clear, data-driven insights that guide sustainable growth.</li>
+                <li> <b style="color: rgb(220, 104, 218);">Empower Decisions:</b> Transform raw data into the actionable intelligence needed to improve customer satisfaction and bottom-line results.</li>
+            </ul>
+        </br>
+            <blockquote>Looking back, Pyökylä wasn't just a successful startup—it was the launchpad for a career dedicated to helping organizations turn data into action, and ideas into tangible, measurable success.</blockquote>
+
+            <p class="cta text-center mt-8">"Behind every great decision is a question, a dataset, and someone curious enough to connect the two.</p>
+            </article>
+
+                <footer class="max-w-7xl mx-auto mt-12 pt-6 border-t border-[var(--neon-green)] text-center text-sm text-gray-400">
+        <p>&copy; 2025 Copyright © Pansy Phuong Lam Tran</p>
+    </footer>
+
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closePostBtn = document.getElementById('close-post-btn');
+            
+            // Mobile Menu Toggle Functionality
+            toggleButton.addEventListener('click', () => {
+                const isExpanded = mobileMenu.classList.toggle('hidden');
+                const icon = toggleButton.querySelector('.bx');
+                
+                // Toggle ARIA attributes
+                toggleButton.setAttribute('aria-expanded', !isExpanded);
+
+                if (isExpanded) {
+                    icon.classList.remove('bx-x');
+                    icon.classList.add('bx-menu');
+                } else {
+                    icon.classList.remove('bx-menu');
+                    icon.classList.add('bx-x');
+                }
+            });
+            
+            // --- CLOSE POST FUNCTION ---
+            closePostBtn.addEventListener('click', (event) => {
+                event.preventDefault(); 
+                
+                // Option 1: Go back to the previous page in history (most user-friendly)
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    // Fallback to the main blog listing page
+                    window.location.href = 'story.html'; 
+                }
+            });
+            // --- END CLOSE POST FUNCTION ---
+        });
+    </script>
+
+</body>
+</html>
